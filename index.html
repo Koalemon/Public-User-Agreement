@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>红石音乐存档使用协议</title>
+  <style>
+    
+
+    :root {
+      --blue-deep:    #0d47a1;
+      --blue-mid:     #1565c0;
+      --blue-light:   #1976d2;
+      --blue-pale:    #e3f0ff;
+      --blue-accent:  #2196f3;
+      --blue-line:    #90caf9;
+      --white:        #ffffff;
+      --off-white:    #f5f9ff;
+      --text-dark:    #0d1b2e;
+      --text-mid:     #2c3e60;
+      --text-light:   #546e8a;
+      --divider:      #cce0ff;
+      --shadow-soft:  0 2px 24px rgba(21,101,192,0.08);
+      --shadow-card:  0 4px 32px rgba(13,71,161,0.10);
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+      background: var(--off-white);
+      color: var(--text-dark);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 40px 16px 60px;
+      line-height: 1.9;
+    }
+
+    /* ── 顶部徽标区 ── */
+    .header {
+      width: 80%;
+      max-width: 880px;
+      text-align: center;
+      margin-bottom: 36px;
+      animation: fadeDown 0.7s ease both;
+    }
+
+    .header-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--blue-deep);
+      color: var(--white);
+      padding: 8px 22px;
+      border-radius: 32px;
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+
+    .header-badge .dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--blue-accent);
+      animation: pulse 2s infinite;
+    }
+
+    .header h1 {
+      font-family: 'Noto Serif SC', serif;
+      font-size: clamp(1.6rem, 4vw, 2.4rem);
+      font-weight: 700;
+      color: var(--blue-deep);
+      letter-spacing: 0.04em;
+      line-height: 1.3;
+    }
+
+    .header .subtitle {
+      margin-top: 10px;
+      font-size: 0.88rem;
+      color: var(--text-light);
+      font-weight: 300;
+      letter-spacing: 0.05em;
+    }
+
+    /* ── 主卡片 ── */
+    .card {
+      width: 80%;
+      max-width: 880px;
+      background: var(--white);
+      border-radius: 16px;
+      box-shadow: var(--shadow-card);
+      border: 1px solid var(--divider);
+      overflow: hidden;
+      animation: fadeUp 0.8s ease 0.15s both;
+    }
+
+    /* 卡片顶部蓝色条 */
+    .card-bar {
+      height: 5px;
+      background: linear-gradient(90deg, var(--blue-deep), var(--blue-accent), var(--blue-light));
+    }
+
+    .card-inner {
+      padding: clamp(24px, 5vw, 56px);
+    }
+
+    /* ── 协议说明块 ── */
+    .preamble {
+      background: var(--blue-pale);
+      border-left: 4px solid var(--blue-mid);
+      border-radius: 0 10px 10px 0;
+      padding: 18px 22px;
+      margin-bottom: 36px;
+      font-size: 0.92rem;
+      color: var(--text-mid);
+    }
+
+    .preamble strong {
+      color: var(--blue-deep);
+      font-weight: 600;
+    }
+
+    /* ── 章节 ── */
+    .section {
+      margin-bottom: 40px;
+    }
+
+    .section-title {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 18px;
+      padding-bottom: 12px;
+      border-bottom: 1.5px solid var(--divider);
+    }
+
+    .section-num {
+      width: 32px;
+      height: 32px;
+      border-radius: 8px;
+      background: var(--blue-deep);
+      color: var(--white);
+      font-size: 0.8rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      letter-spacing: 0.03em;
+    }
+
+    .section-title h2 {
+      font-family: 'Noto Serif SC', serif;
+      font-size: clamp(1rem, 2.5vw, 1.15rem);
+      font-weight: 600;
+      color: var(--blue-deep);
+      letter-spacing: 0.04em;
+    }
+
+    /* ── 条款列表 ── */
+    .clause-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .clause-list li {
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+      padding: 14px 16px;
+      border-radius: 10px;
+      font-size: clamp(0.83rem, 2vw, 0.93rem);
+      color: var(--text-mid);
+      border: 1px solid transparent;
+      transition: background 0.2s, border-color 0.2s;
+    }
+
+    .clause-list li:hover {
+      background: var(--blue-pale);
+      border-color: var(--divider);
+    }
+
+    /* 禁止条款 - 红色图标 */
+    .clause-list.prohibit li .icon {
+      font-size: 1.1rem;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    .clause-list.prohibit li {
+      background: #fff8f8;
+      border-color: #ffd0d0;
+    }
+
+    .clause-list.prohibit li:hover {
+      background: #fff2f2;
+      border-color: #ffb3b3;
+    }
+
+    /* 普通条款 */
+    .clause-list.normal li {
+      background: var(--off-white);
+      border-color: var(--divider);
+    }
+
+    .clause-list li .clause-text {
+      flex: 1;
+      line-height: 1.8;
+    }
+
+    .clause-list li .clause-text strong {
+      color: var(--text-dark);
+      font-weight: 600;
+    }
+
+    /* ── 警告高亮块 ── */
+    .warning-block {
+      background: linear-gradient(135deg, #fff3e0, #fff8e1);
+      border: 1px solid #ffcc80;
+      border-left: 4px solid #fb8c00;
+      border-radius: 0 10px 10px 0;
+      padding: 16px 20px;
+      font-size: 0.88rem;
+      color: #5d4037;
+      margin-top: 16px;
+    }
+
+    .warning-block .warning-title {
+      font-weight: 700;
+      color: #e65100;
+      margin-bottom: 4px;
+      font-size: 0.9rem;
+    }
+
+    /* ── 分隔线 ── */
+    .divider-line {
+      height: 1px;
+      background: var(--divider);
+      margin: 32px 0;
+    }
+
+    /* ── 页脚 ── */
+    .footer-block {
+      margin-top: 8px;
+      padding-top: 24px;
+      border-top: 1.5px solid var(--divider);
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: flex-end;
+      gap: 12px;
+    }
+
+    .footer-block .footer-note {
+      font-size: 0.8rem;
+      color: var(--text-light);
+      line-height: 1.7;
+    }
+
+    .footer-block .version-badge {
+      background: var(--blue-pale);
+      color: var(--blue-mid);
+      font-size: 0.75rem;
+      font-weight: 600;
+      padding: 4px 12px;
+      border-radius: 20px;
+      border: 1px solid var(--blue-line);
+      white-space: nowrap;
+    }
+
+    /* ── 动画 ── */
+    @keyframes fadeDown {
+      from { opacity: 0; transform: translateY(-18px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(22px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.3; }
+    }
+
+    /* ── 响应式 ── */
+    @media (max-width: 640px) {
+      body { padding: 24px 12px 48px; }
+      .header, .card { width: 100%; }
+      .card-inner { padding: 24px 20px; }
+      .footer-block { flex-direction: column; align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="header">
+    
+    <h1><p>红石音乐存档使用协议</p>
+      <p>------------------------------------------</p>
+      <p>(仅用于拉丝吉他堡公开的存档)</p>
+    </h1>
+    <p class="subtitle">Redstone Music Archive · User Agreement</p>
+  </div>
+
+  <div class="card">
+    <div class="card-bar"></div>
+    <div class="card-inner">
+
+      <!-- 前言 -->
+      <div class="preamble">
+        <p><strong>请在使用本存档前仔细阅读以下协议全文。</strong></p>
+        <p>本协议适用于所有通过任何渠道获取、使用、传播本红石音乐存档的用户。一旦您以任何方式使用本存档，即视为您已完整阅读并同意本协议的全部条款。</p>
+        <p><strong>特别说明：存档只能在我的世界JAVA版1.19.3及以上版本中使用(存档原始版本为26.1以上)，仅保证Windows10，Windows11的操作系统能正常运行。售出后非质量问题不支持退换。</strong></p>
+      </div>
+
+      <!-- 第一章：定义 -->
+      <div class="section">
+        <div class="section-title">
+          <div class="section-num">01</div>
+          <h2>存档定义与权利归属</h2>
+        </div>
+        <ul class="clause-list normal">
+          <li>
+            <span class="icon">📦</span>
+            <span class="clause-text">本协议所指"红石音乐存档"(以下简称"本存档")，包括但不限于使用 Minecraft 红石系统搭建的音乐装置地图文件（.zip / .rar / 原版存档文件夹）、配套说明文档及演示素材。</span>
+          </li>
+          
+          <li>
+            <span class="icon">🔑</span>
+            <span class="clause-text">用户获得的本存档不可转让、不可再授权，且不构成对本存档任何权利的转让或出售。</span>
+          </li>
+        </ul>
+      </div>
+
+      <!-- 第二章：严禁行为 -->
+      <div class="section">
+        <div class="section-title">
+          <div class="section-num">02</div>
+          <h2>严格禁止行为</h2>
+        </div>
+        <ul class="clause-list prohibit">
+          <li>
+            <span class="icon">🚫</span>
+            <span class="clause-text"><strong>禁止盗录与翻录：</strong>严禁以任何形式对本存档内的音乐内容进行录制、抓取或采样，包括但不限于屏幕录制、游戏内录音、第三方软件捕获音频等方式，并将所得录音或者视频单独发布或传播，禁止上传至任何视频平台(包括但不限于抖音，b站，快手，小红书，视频号)。</span>
+          </li>
+          <li>
+            <span class="icon">🚫</span>
+            <span class="clause-text"><strong>禁止转载与二次分发：</strong>严禁将本存档文件以任何形式上传至第三方平台、网盘、群文件、网站或通过任何渠道向不特定公众传播。</span>
+          </li>
+          <li>
+            <span class="icon">🚫</span>
+            <span class="clause-text"><strong>禁止拆解与逆向工程：</strong>严禁对本存档进行拆解、结构复原或以任何技术手段提取其中的红石电路逻辑、音符盒排列方案及音乐编排数据。</span>
+          </li>
+          <li>
+            <span class="icon">🚫</span>
+            <span class="clause-text"><strong>禁止商业牟利：</strong>严禁将本存档或其衍生内容用于任何形式的商业目的，包括但不限于出售、打包贩卖、付费订阅、直播带货或以本存档内容申请商业变现。</span>
+          </li>
+          <li>
+            <span class="icon">🚫</span>
+            <span class="clause-text"><strong>禁止冒名署名：</strong>严禁将本存档以自己或他人名义发布，或删除、覆盖原作者署名信息，不得在任何场合声称对本存档内容拥有原创权。</span>
+          </li>
+          <li>
+            <span class="icon">🚫</span>
+            <span class="clause-text"><strong>禁止修改后传播：</strong>严禁在未获授权的情况下对本存档进行修改、二次创作后向外发布，包括更换乐曲、修改地图外观、添加模组内容后重新打包分发。</span>
+          </li>
+          <li>
+            <span class="icon">🚫</span>
+            <span class="clause-text"><strong>禁止以录音申请版权：</strong>严禁将通过任何途径录制的本存档音频内容提交至音乐版权平台（如 Content ID、音乐版权平台等）。</span>
+          </li>
+        </ul>
+
+        
+      </div>
+
+      <!-- 第三章：允许行为 -->
+      <div class="section">
+        <div class="section-title">
+          <div class="section-num">03</div>
+          <h2>允许的个人使用范围</h2>
+        </div>
+        <ul class="clause-list normal">
+          <li>
+            <span class="icon">✅</span>
+            <span class="clause-text">用户可在个人设备上加载并运行本存档，供<strong>个人欣赏与学习</strong>使用。</span>
+          </li>
+          <div class="warning-block">
+            <div class="warning-title">⚠ 特别提示</div>
+            <p>您的所有使用、传播、录制、上传、改编等相关行为的全部法律责任、版权合规责任、法律风险、第三方索赔、行政处罚、经济赔偿责任，均由您自行全额承担，与本存档我方无任何关联。您承诺，若因您的相关行为导致我方遭受任何第三方索赔、行政处罚、名誉损失、经济损失、维权成本支出的，您需向我方承担全额赔偿责任，包括但不限于直接经济损失、间接损失、商誉损失、律师费、诉讼费、公证费、差旅费等全部维权合理开支。</p>
+          </div>
+        </ul>
+      </div>
+
+      <!-- 第四章：责任声明 -->
+      <div class="section">
+        <div class="section-title">
+          <div class="section-num">04</div>
+          <h2>责任声明与协议变更</h2>
+        </div>
+        <ul class="clause-list normal">
+          <li>
+            <span class="icon">📋</span>
+            <span class="clause-text">原作者对因存档兼容性问题、游戏版本差异或第三方平台故障导致的任何损失不承担责任。</span>
+          </li>
+          
+          
+        </ul>
+      </div>
+
+      <div class="divider-line"></div>
+
+      <!-- 页脚 -->
+      <div class="footer-block">
+        <div class="footer-note">
+          本协议自用户获取本存档之日起生效，适用于本存档所有版本。<br>
+          原作者保留对本协议的最终解释权。
+        </div>
+        <div class="version-badge">Copyright © 2026 Koalemon</div>
+      </div>
+
+    </div>
+  </div>
+
+</body>
+</html>
